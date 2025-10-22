@@ -64,6 +64,7 @@ function createHistoryEntry(type, amount, transferDestination = null) {
     };
 }
 
+// Formater le message de l'historique
 function formatHistoryMessage(entry) {
     if (!entry || typeof entry !== "object") {
         return entry;
@@ -76,6 +77,8 @@ function formatHistoryMessage(entry) {
     return `${message} - ${new Date(date).toLocaleString()}`;
 }
 
+
+// Création d'un compte bancaire
 function createBankAccount(name, accountName, initialDeposit) {
     if (!validateClientExists(name)) {
         return;
@@ -92,6 +95,7 @@ function createBankAccount(name, accountName, initialDeposit) {
     console.log(`Le compte bancaire "${accountName}" a été créé pour ${name} avec ${initialDeposit}€ déposés.`);
 }
 
+// Dépôt d'argent sur un compte bancaire
 function depositMoneyOnBankAccount(name, accountName, amount) {
     const account = ensureAccount(name, accountName);
     if (!account) {
@@ -102,6 +106,7 @@ function depositMoneyOnBankAccount(name, accountName, amount) {
     console.log(`Dépôt de ${amount}€ effectué sur le compte "${accountName}" de ${name}. Nouveau solde : ${account.balance}€.`);
 }
 
+// Retrait d'argent d'un compte bancaire
 function withdrawMoneyFromBankAccount(name, accountName, amount) {
     const account = ensureAccount(name, accountName);
     if (!account) {
@@ -116,6 +121,8 @@ function withdrawMoneyFromBankAccount(name, accountName, amount) {
     }
 }
 
+
+// Transfert d'argent entre deux comptes bancaires (client différent ou non)
 function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, toAccountName, amount) {
     if (!validateClientExists(fromName) || !validateClientExists(toName)) {
         return;
@@ -145,6 +152,8 @@ function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, toAccou
     }
 }
 
+
+// Afficher les comptes bancaires d'un client
 function displayBankAccounts(name) {
     if (!validateClientExists(name)) {
         return;
@@ -155,6 +164,7 @@ function displayBankAccounts(name) {
     });
 }
 
+// Afficher l'historique des transactions d'un compte bancaire
 function displayHistory(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
@@ -166,6 +176,7 @@ function displayHistory(name, accountName) {
     });
 }
 
+// Afficher l'argent total d'un client (tous comptes confondus)
 function displayMoneyFromBankAccounts(name) {
     if (!validateClientExists(name)) {
         return;
@@ -176,6 +187,7 @@ function displayMoneyFromBankAccounts(name) {
     });
 }
 
+// Afficher l'argent total de tous les clients
 function displayAllMoney() {
     let total = 0;
     clients.forEach(name => {
@@ -186,6 +198,7 @@ function displayAllMoney() {
     console.log(`Total de l'argent dans toutes les banques : ${total}€`);
 }
 
+// Vérifier si un compte est vide avant suppression
 function checkIfAccountIsNotEmpty(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
@@ -200,6 +213,7 @@ function checkIfAccountIsNotEmpty(name, accountName) {
     }
 }
 
+// Vérifier si un compte est en négatif (fonction de "prévention", le client ne pouvant pas avoir de compte en négatif)
 function checkIfAccountIsNegative(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
@@ -214,6 +228,7 @@ function checkIfAccountIsNegative(name, accountName) {
     }
 }
 
+// Suppression d'un compte bancaire
 function deleteBankAccount(name, accountName) {
     if (!validateClientExists(name)) {
         return;
