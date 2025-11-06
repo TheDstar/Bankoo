@@ -18,12 +18,12 @@ const bankAccounts = {
     "Eve": [{ accountNumber: 1, accountName: "Compte commun", balance: 2000, history: [] }]
 };
 
-function test() {
+export function test() {
     console.log("Le script fonctionne correctement !");
 }
 
 // Check si le client existe
-function validateClientExists(name) {
+export function validateClientExists(name) {
     if (!clients.includes(name)) {
         console.log(`Le client ${name} n'existe pas.`);
         return false;
@@ -32,12 +32,12 @@ function validateClientExists(name) {
 }
 
 // Trouver un compte par nom
-function findAccount(name, accountName) {
+export function findAccount(name, accountName) {
     return bankAccounts[name]?.find(acc => acc.accountName === accountName);
 }
 
 // Vérif si le compte existe bien
-function ensureAccount(name, accountName, missingMessage) {
+export function ensureAccount(name, accountName, missingMessage) {
     if (!validateClientExists(name)) {
         return null;
     }
@@ -50,11 +50,15 @@ function ensureAccount(name, accountName, missingMessage) {
 }
 
 // Générer un UUID par log
-function generateUuid() {
+export function generateUuid() {
     return crypto.randomUUID();
 }
 
-function createHistoryEntry(type, amount, transferDestination = null) {
+export function getAllClients() {
+    return clients;
+}
+
+export function createHistoryEntry(type, amount, transferDestination = null) {
     return {
         uuid: generateUuid(),
         type,
@@ -65,7 +69,7 @@ function createHistoryEntry(type, amount, transferDestination = null) {
 }
 
 // Formater le message de l'historique
-function formatHistoryMessage(entry) {
+export function formatHistoryMessage(entry) {
     if (!entry || typeof entry !== "object") {
         return entry;
     }
@@ -79,7 +83,7 @@ function formatHistoryMessage(entry) {
 
 
 // Création d'un compte bancaire
-function createBankAccount(name, accountName, initialDeposit) {
+export function createBankAccount(name, accountName, initialDeposit) {
     if (!validateClientExists(name)) {
         return;
     }
@@ -96,7 +100,7 @@ function createBankAccount(name, accountName, initialDeposit) {
 }
 
 // Dépôt d'argent sur un compte bancaire
-function depositMoneyOnBankAccount(name, accountName, amount) {
+export function depositMoneyOnBankAccount(name, accountName, amount) {
     const account = ensureAccount(name, accountName);
     if (!account) {
         return;
@@ -107,7 +111,7 @@ function depositMoneyOnBankAccount(name, accountName, amount) {
 }
 
 // Retrait d'argent d'un compte bancaire
-function withdrawMoneyFromBankAccount(name, accountName, amount) {
+export function withdrawMoneyFromBankAccount(name, accountName, amount) {
     const account = ensureAccount(name, accountName);
     if (!account) {
         return;
@@ -123,7 +127,7 @@ function withdrawMoneyFromBankAccount(name, accountName, amount) {
 
 
 // Transfert d'argent entre deux comptes bancaires (client différent ou non)
-function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, toAccountName, amount) {
+export function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, toAccountName, amount) {
     if (!validateClientExists(fromName) || !validateClientExists(toName)) {
         return;
     }
@@ -154,7 +158,7 @@ function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, toAccou
 
 
 // Afficher les comptes bancaires d'un client
-function displayBankAccounts(name) {
+export function displayBankAccounts(name) {
     if (!validateClientExists(name)) {
         return;
     }
@@ -165,7 +169,7 @@ function displayBankAccounts(name) {
 }
 
 // Afficher l'historique des transactions d'un compte bancaire
-function displayHistory(name, accountName) {
+export function displayHistory(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
         return;
@@ -177,7 +181,7 @@ function displayHistory(name, accountName) {
 }
 
 // Afficher l'argent total d'un client (tous comptes confondus)
-function displayMoneyFromBankAccounts(name) {
+export function displayMoneyFromBankAccounts(name) {
     if (!validateClientExists(name)) {
         return;
     }
@@ -188,7 +192,7 @@ function displayMoneyFromBankAccounts(name) {
 }
 
 // Afficher l'argent total de tous les clients
-function displayAllMoney() {
+export function displayAllMoney() {
     let total = 0;
     clients.forEach(name => {
         bankAccounts[name].forEach(account => {
@@ -199,7 +203,7 @@ function displayAllMoney() {
 }
 
 // Vérifier si un compte est vide avant suppression
-function checkIfAccountIsNotEmpty(name, accountName) {
+export function checkIfAccountIsNotEmpty(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
         return false;
@@ -214,7 +218,7 @@ function checkIfAccountIsNotEmpty(name, accountName) {
 }
 
 // Vérifier si un compte est en négatif (fonction de "prévention", le client ne pouvant pas avoir de compte en négatif)
-function checkIfAccountIsNegative(name, accountName) {
+export function checkIfAccountIsNegative(name, accountName) {
     const account = ensureAccount(name, accountName);
     if (!account) {
         return false;
@@ -228,8 +232,9 @@ function checkIfAccountIsNegative(name, accountName) {
     }
 }
 
+
 // Suppression d'un compte bancaire
-function deleteBankAccount(name, accountName) {
+export function deleteBankAccount(name, accountName) {
     if (!validateClientExists(name)) {
         return;
     }

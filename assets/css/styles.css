@@ -19,7 +19,8 @@ body {
 header {
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  align-items: center;
+  min-height: 6rem;
   background-color: transparent;
 }
 header h1 {
@@ -32,11 +33,37 @@ main {
   display: flex;
   gap: 2rem;
   padding: 1rem 2rem;
-  height: calc(100vh - 80px);
-  background-color: red;
+  height: calc(100vh - 7rem);
 }
 main div.left-container {
   display: flex;
-  background-color: blue;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
   width: 20%;
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+main div.left-container h3 {
+  color: #fff;
+  font-size: 1.5rem;
+}
+main div.left-container div.client-list {
+  flex: 1;
+  gap: 1rem;
+  overflow-y: auto;
+}
+main div.left-container div.client-list div.client-item {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+main div.left-container div.client-list div.client-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }/*# sourceMappingURL=styles.css.map */
