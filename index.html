@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bankoo</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 </head>
 <body>
     <header>
@@ -13,28 +13,31 @@
     </header>
     <main>
         <div class="left-container">
-            <h3>Liste des clients</h3>
-            <div class="client-list">
+            <div class="left-container-header">
+                <h1>Clients</h1>
+                <div>
+                    <!-- déplier tous les comptes bancaires -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
             </div>
-            <div class="add-client">
-                <h4>Ajouter un client</h4>
-                <input type="text" id="client-name" placeholder="Nom du client" required>
-                <button type="submit">Ajouter</button>
+            <div class="clients-container">
+                <div class="client-list">
+                </div>
+                <div class="add-client">
+                    <h4>Ajouter un client</h4>
+                    <input type="text" class="add-client-input" id="client-name" placeholder="Nom du client" required>
+                    <button class="add-client-button" type="submit">Ajouter</button>
+                </div>
             </div>
         </div>
 
         <div class="right-container">
-            <div class="client-bank-accounts">
-                <h3>Comptes bancaires du client</h3>
-                <div class="client-bank-accounts-list">
-                    <!-- le script va afficher les comptes bancaires -->
+            <div class="right-container-header">
+                <div>
+                    <!-- déplier tous les comptes bancaires -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <div class="client-bank-accounts-actions">
-                    <div class="add-bank-account">
-                        <i class="fa-solid fa-plus"></i>
-                        Ajouter un compte bancaire
-                    </div>
-                </div>
+
             </div>
         </div>
     </main>

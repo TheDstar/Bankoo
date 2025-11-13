@@ -8,6 +8,5 @@ Web App utilisant le langage JavaScript dans un cadre universitaire.
 > - ChatGPT (``GPT-5``)
 >
 > pour les fonctionnalités suivantes :
-> - la création des clients (syntaxe JSON);
-> - la création des comptes clients (syntaxe JSON);
+> - la transformation du localStorage en JSON lisible par le JS
 > - le nom des commits Git.

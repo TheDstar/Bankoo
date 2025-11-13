@@ -1,22 +1,25 @@
-// Liste des ienclis
-const clients = [
-    "Alice",
-    "Bob",
-    "Charlie",
-    "Diana",
-    "Eve"
-];
-
 // Comptes bancaires
-// - Chaque iencli peut avoir plusieurs comptes
+// - Chaque client peut avoir plusieurs comptes
 // - Chaque compte a un numéro, un nom, un solde et un historique des transactions
-const bankAccounts = {
-    "Alice": [{ accountNumber: 1, accountName: "Compte courant", balance: 5000, history: [] }],
-    "Bob": [{ accountNumber: 1, accountName: "Compte courant", balance: 3000, history: [] }],
-    "Charlie": [{ accountNumber: 1, accountName: "LDDS", balance: 7000, history: [] }],
-    "Diana": [{ accountNumber: 1, accountName: "Compte courant", balance: 10000, history: [] }],
-    "Eve": [{ accountNumber: 1, accountName: "Compte commun", balance: 2000, history: [] }]
-};
+
+// création du localstorage si pas créé & vide
+export function createLS() {
+    let accounts = getAccountsFromLS();
+    if (!accounts) {
+        localStorage.setItem("bankoo_accounts", JSON.stringify([
+            {
+                name: "Alice",
+                age: 30,
+                bankAccounts: {
+                    "Compte principal": 3000,
+                    "LDDS": 2000
+                }
+            }
+        ]));
+        accounts = getAccountsFromLS();
+    }
+    return JSON.stringify(accounts);
+}
 
 export function test() {
     console.log("Le script fonctionne correctement !");
@@ -54,8 +57,9 @@ export function generateUuid() {
     return crypto.randomUUID();
 }
 
-export function getAllClients() {
-    return clients;
+export function getAccountsFromLS() {
+    let bankAccounts = JSON.parse(localStorage.getItem('bankoo_accounts'));
+    return bankAccounts;
 }
 
 export function createHistoryEntry(type, amount, transferDestination = null) {
@@ -159,13 +163,7 @@ export function transferMoneyBetweenAccounts(fromName, fromAccountName, toName, 
 
 // Afficher les comptes bancaires d'un client
 export function displayBankAccounts(name) {
-    if (!validateClientExists(name)) {
-        return;
-    }
-    console.log(`Comptes bancaires de ${name} :`);
-    bankAccounts[name].forEach(account => {
-        console.log(`- ${account.accountName} (Numéro: ${account.accountNumber}) : ${account.balance}€`);
-    });
+    
 }
 
 // Afficher l'historique des transactions d'un compte bancaire
