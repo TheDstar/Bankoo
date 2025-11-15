@@ -64,8 +64,8 @@ main {
             div.client-list {
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
-                height: calc(100% - 10rem);
+                gap: 3rem;
+                height: calc(100% - 13rem);
                 overflow-y: scroll;
 
                 p.no-client-message {
@@ -161,6 +161,12 @@ main {
                 border: none;
                 border-radius: 6px;
                 font-size: 1rem;
+                background-color: rgba(255, 255, 255, 0.25);
+                color: #fff;
+
+                &::placeholder {
+                    color: #eee;
+                }
             }
 
             button.add-client-button {

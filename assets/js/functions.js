@@ -2,6 +2,22 @@
 // - Chaque client peut avoir plusieurs comptes
 // - Chaque compte a un numéro, un nom, un solde et un historique des transactions
 
+// création du local storage des logs
+export function createLogsLS() {
+    let logs = getLogsFromLS();
+    if (!logs) {
+        localStorage.setItem("bankoo_logs", JSON.stringify([]));
+        logs = getLogsFromLS();
+    }
+    return JSON.stringify(logs);
+}
+
+// Récupération des logs depuis le local storage
+export function getLogsFromLS() {
+    let logs = JSON.parse(localStorage.getItem('bankoo_logs'));
+    return logs;
+}
+
 // création du localstorage si pas créé & vide
 export function createLS() {
     let accounts = getAccountsFromLS();
@@ -17,8 +33,15 @@ export function createLS() {
             }
         ]));
         accounts = getAccountsFromLS();
+        createLogsLS();
     }
     return JSON.stringify(accounts);
+}
+
+// Récupération des comptes depuis le local storage
+export function getAccountsFromLS() {
+    let bankAccounts = JSON.parse(localStorage.getItem('bankoo_accounts'));
+    return bankAccounts;
 }
 
 export function test() {
@@ -55,11 +78,6 @@ export function ensureAccount(name, accountName, missingMessage) {
 // Générer un UUID par log
 export function generateUuid() {
     return crypto.randomUUID();
-}
-
-export function getAccountsFromLS() {
-    let bankAccounts = JSON.parse(localStorage.getItem('bankoo_accounts'));
-    return bankAccounts;
 }
 
 export function createHistoryEntry(type, amount, transferDestination = null) {
