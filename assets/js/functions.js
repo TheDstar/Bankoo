@@ -1,4 +1,4 @@
-// FICHIER OBSOLETE - NE PLUS UTILISER - FONCTIONS DANS bankoo.js
+// FICHIER OBSOLETE - NE PLUS UTILISER - FONCTIONS DANS script.js
 // A L'EXCEPTION DE createLS() et getAccountsFromLS()
 
 // création du local storage des logs
