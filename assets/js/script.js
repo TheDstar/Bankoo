@@ -112,12 +112,12 @@ function displayClientInfo(clientName) {
     btnGroup.style.gap = '0.5rem';
 
     const renameBtn = document.createElement('button');
-    renameBtn.innerHTML = '<span title="Renommer">✏️</span>';
+    renameBtn.innerHTML = '<span title="Renommer">✏️</span> Renommer';
     renameBtn.classList.add('rename-client-btn');
     btnGroup.appendChild(renameBtn);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<span title="Supprimer">🗑️</span>';
+    deleteBtn.innerHTML = '<span title="Supprimer">🗑️</span> Supprimer';
     deleteBtn.classList.add('delete-client-btn');
     btnGroup.appendChild(deleteBtn);
 
@@ -243,12 +243,12 @@ function displayBankAccountInfo(clientName, accountName) {
     btnGroup.appendChild(transferBtn);
 
     const renameBtn = document.createElement('button');
-    renameBtn.innerHTML = '<span title="Renommer">✏️</span>';
+    renameBtn.innerHTML = '<span title="Renommer">✏️</span> Renommer';
     renameBtn.classList.add('rename-account-btn');
     btnGroup.appendChild(renameBtn);
 
     const deleteBtn = document.createElement('button');
-    deleteBtn.innerHTML = '<span title="Supprimer">🗑️</span>';
+    deleteBtn.innerHTML = '<span title="Supprimer">🗑️</span> Supprimer';
     deleteBtn.classList.add('delete-account-btn');
     btnGroup.appendChild(deleteBtn);
 
