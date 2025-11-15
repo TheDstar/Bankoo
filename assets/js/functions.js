@@ -1,6 +1,5 @@
-// Comptes bancaires
-// - Chaque client peut avoir plusieurs comptes
-// - Chaque compte a un numéro, un nom, un solde et un historique des transactions
+// FICHIER OBSOLETE - NE PLUS UTILISER - FONCTIONS DANS bankoo.js
+// A L'EXCEPTION DE createLS() et getAccountsFromLS()
 
 // création du local storage des logs
 export function createLogsLS() {
